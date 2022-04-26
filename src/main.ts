@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs';
+
+import { init } from './init';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -16,8 +17,8 @@ export function activate(context: vscode.ExtensionContext) {
           enableScripts: true,
         }
       );
-
-      panel.webview.html = await generateHTML();
+      
+      panel.webview.html = await init();
 
       if (panel.active) {
         panel.webview.postMessage({'update': true, 'payload': {'id':'label', 'innerHTML': 'I <3 coding'}});
@@ -31,20 +32,3 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 }
-
-async function generateHTML() {
-	let html = '';
-	let css = '';
-  let js = '';
-
-	await fs.promises.readFile(__dirname + '/../src/webview/index.html', 'utf-8').then(data => html = data);
-	await fs.promises.readFile(__dirname + '/../src/webview/index.css', 'utf-8').then(data => css = data);
-  await fs.promises.readFile(__dirname + '/../src/webview/index.js', 'utf-8').then(data => js = data);
-	
-	html = html.replace('<!--${index.css}-->', '<style>\n'+css+'</style>\n');
-  html = html.replace('<!--${index.js}-->', '<script>\n'+js+'</script>\n');
-
-	return html;
-}
-
-	
