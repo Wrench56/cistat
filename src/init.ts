@@ -9,6 +9,7 @@ export async function init() {
     if (dir === false) {
         // Not yet supported...
         html.getElementById('status')!.innerHTML = 'This VSCode window did not open a project!';
+        return html.toString();
     } else {
         html.getElementById('status')!.innerHTML = 'Success!';
     }
@@ -16,5 +17,5 @@ export async function init() {
     getLines();
 
 
-    return html.toString(); // vscode need a string
+    return html.toString(); // vscode needs a string
 }
