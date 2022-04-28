@@ -5,6 +5,7 @@ import * as lines from './functions/lines';
 import * as vscode from 'vscode';
 
 export async function init(panel: vscode.WebviewPanel) {
+    console.log('[+] Init');
     const html = parse(await generateHTML()); // parse to use the .getElementById etc.
     
     let dir = getWorkingDir();

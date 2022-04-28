@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 export function handler(content: Map<string, string>, panel: vscode.WebviewPanel) {
 
     const payload = {'update': true, 'payloads': [
-        {'id':'all', 'innerHTML': getAllLines(content).toString()}
+        {'id':'all-lines', 'innerHTML': getAllLines(content).toString()}
     ]};
     console.log(payload);
     panel.webview.postMessage(payload);
