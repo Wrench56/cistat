@@ -18,11 +18,9 @@ export function activate(context: vscode.ExtensionContext) {
         }
       );
       
-      panel.webview.html = await init();
+      panel.webview.html = await init(panel);
 
-      if (panel.active) {
-        panel.webview.postMessage({'update': true, 'payload': {'id':'label', 'innerHTML': 'I <3 coding'}});
-      }
+
       panel.webview.onDidReceiveMessage((data) => {
         console.log(data);
       },
