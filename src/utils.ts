@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 
-export function getWorkingDir() {
+export function getWorkingDir() : string | false {
     const folder = vscode.workspace.workspaceFolders;
 
     if (folder !== undefined) {

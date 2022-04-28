@@ -6,7 +6,7 @@ import * as vscode from 'vscode';
 
 export async function init(panel: vscode.WebviewPanel) {
     const html = parse(await generateHTML()); // parse to use the .getElementById etc.
-
+    
     let dir = getWorkingDir();
     if (dir === false) {
         // Not yet supported...
