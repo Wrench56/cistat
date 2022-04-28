@@ -1,3 +1,66 @@
-.container {
-    background-color: #433e3e;
+html, body {
+    height: 100%;
+    margin: 0;
 }
+
+.main-container {
+    width: auto !important;
+    min-height: 100%;
+    display: flex;
+    justify-content:center;
+  }
+
+
+.container {
+    width: 60%;
+    background-color: #475358;
+    border-radius: 16px;
+    min-height: 100%; 
+    margin: 10px;
+}
+
+.inner {
+    margin: 24px;
+    max-height: inherit;
+    max-width: inherit;
+    overflow-x: auto;
+}
+
+
+.center-text {
+    text-align: center;
+}
+
+.center-item {
+    display: flex;
+    justify-content:center;
+}
+
+.header {
+    margin: 10px;
+    color: whitesmoke;
+    font-size: 52px;    
+}
+
+.key {
+    float:left;
+}
+
+.value {
+    float:right;
+}
+
+.entries {
+    margin: 8px;
+    color: whitesmoke;
+    font-size: 24px;
+}
+
+.dash{
+    border: 2px solid whitesmoke;
+    width: 90%;
+    height: 0px;
+    border-radius: 16px;
+    align-self: center;
+}
+
