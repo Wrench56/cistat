@@ -6,15 +6,22 @@ import * as path from 'path';
 export function getFiles(directory: string) {
     let files: string[] = [];
     fs.readdirSync(directory).forEach(file => {
-        const absolute = path.join(directory, file);
-        
-        if (fs.statSync(absolute).isDirectory()) {
-            getFiles(absolute).forEach((e) => files.push(e));
-        } else {
-            files.push(absolute);
-        };
+        console.log(file);
+        if (!['img', 'bin', 'jpg', 'jpeg', 'png', 'exe', 'apk', 'pyc'].includes(file.split('.')[file.split(',').length-1])) {
+            const absolute = path.join(directory, file);
+            
+            if (fs.statSync(absolute).isDirectory()) {
+                getFiles(absolute).forEach((e) => files.push(e));
+            } else {
+                files.push(absolute);
+            };
+        }
     });
+    // filter out images etc
+    console.log(files.length);
 
+    files = files.filter(o => !['img', 'bin', 'jpg', 'jpeg', 'png', 'exe', 'apk', 'pyc'].includes(o.split('.')[o.split(',').length-1]));
+    console.log(files.length);
     return files;
 }
 
