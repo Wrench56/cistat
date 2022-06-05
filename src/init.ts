@@ -13,9 +13,6 @@ export async function init(panel: vscode.WebviewPanel) {
         // Not yet supported...
         html.getElementById('status')!.innerHTML = 'This VSCode window did not open a project!';
         return html.toString();
-    } else {
-        dir += '/';
-        html.getElementById('status')!.innerHTML = 'Success!';
     }
 
     getFileContent(dir).then(content => {
